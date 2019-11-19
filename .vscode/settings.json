@@ -1,0 +1,10 @@
+{
+	"files.exclude": {
+		"G:/Unreal Group Project/Frullet/.git": true,
+		"G:/Unreal Group Project/Frullet/.vs": true,
+		"G:/Unreal Group Project/Frullet/.vscode": true,
+		"G:/Unreal Group Project/Frullet/Content": true,
+		"G:/Unreal Group Project/Frullet/Intermediate": true,
+		"G:/Unreal Group Project/Frullet/Saved": true
+	}
+}
