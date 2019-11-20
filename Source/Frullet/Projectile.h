@@ -4,39 +4,34 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Pickup.generated.h"
-
-UENUM(BlueprintType)
-enum class ItemType: uint8 {
-	IT_Seed		UMETA(DisplayName = "Seed"),
-	IT_Health	UMETA(DisplayName = "Health")
-};
+#include "Projectile.generated.h"
 
 UCLASS()
-class FRULLET_API APickup : public AActor
+class FRULLET_API AProjectile : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	APickup();
+	AProjectile();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	USceneComponent* sceneComponent;
+	USceneComponent* DefaultSceneComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	class UBoxComponent* collider;
+	class UStaticMeshComponent* StaticMesh;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	class UStaticMeshComponent* mesh;
+	class UProjectileMovementComponent* ProjectileMovement;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	ItemType itemType;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	float Damage;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
-	bool characterNear;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	UParticleSystem* EffectOnHit;
 
-	
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+	int SeedIndex;
 
 protected:
 	// Called when the game starts or when spawned
@@ -45,8 +40,5 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	void NotifyActorBeginOverlap(AActor* OtherActor) override;
-
 
 };
