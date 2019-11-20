@@ -34,11 +34,3 @@ void APickup::Tick(float DeltaTime)
 
 }
 
-void APickup::NotifyActorBeginOverlap(AActor* OtherActor)
-{
-	// QTE
-	
-}
-
-
-
